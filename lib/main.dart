@@ -1,5 +1,5 @@
 // import 'package:flutter/material.dart';
-// import 'package:toonflix/widgets/Button.dart';
+// import 'package:toonflix/widgets/button.dart';
 // import 'package:toonflix/widgets/currency_card.dart';
 
 // void main() {
@@ -140,49 +140,58 @@
 // }
 
 import 'package:flutter/material.dart';
+import 'package:toonflix/screens/home_screen.dart';
 
-class MyWidget extends StatefulWidget {
-  const MyWidget({super.key});
-
-  @override
-  State<MyWidget> createState() => _MyWidgetState();
+void main() {
+  runApp(const App());
 }
 
-class _MyWidgetState extends State<MyWidget> {
-  int counter = 0;
-
-  void onClicked() {
-    counter += counter;
-  }
+class App extends StatelessWidget {
+  const App({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text(
-                "Click Count",
-                style: TextStyle(
-                  fontSize: 30,
-                ),
-              ),
-              Text(
-                '$counter',
-                style: const TextStyle(
-                  fontSize: 30,
-                ),
-              ),
-              IconButton(
-                iconSize: 40,
-                onPressed: onClicked,
-                icon: const Icon(Icons.add_box_rounded),
-              )
-            ],
+        theme: ThemeData(
+          scaffoldBackgroundColor: const Color(0xffE7626C),
+          textTheme: const TextTheme(
+            headlineLarge: TextStyle(
+              color: Color(0xff232B55),
+            ),
           ),
+          cardColor: const Color(0xffF4EDDB),
         ),
+        home: const HomeScreen());
+  }
+}
+
+class MyLargeTitle extends StatefulWidget {
+  const MyLargeTitle({
+    super.key,
+  });
+
+  @override
+  State<MyLargeTitle> createState() => _MyLargeTitleState();
+}
+
+class _MyLargeTitleState extends State<MyLargeTitle> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      "My Large Title",
+      style: TextStyle(
+        fontSize: 30,
+        color: Theme.of(context).textTheme.titleLarge?.color,
       ),
     );
   }
